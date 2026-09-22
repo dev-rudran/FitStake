@@ -116,8 +116,8 @@ h2.title em{font-style:normal;color:var(--lime)}
 .stat-cap{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
 
 /* team */
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-.member{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid var(--stroke);border-radius:22px;padding:26px 24px;position:relative;overflow:hidden}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.member{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid var(--stroke);border-radius:22px;padding:20px 20px;position:relative;overflow:hidden}
 .member::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--lime),var(--mint));opacity:0;transition:opacity .3s}
 .member:hover::after{opacity:1}
 .m-ava{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-family:'Unbounded';font-weight:800;font-size:20px;color:#08120a;margin-bottom:16px}
@@ -259,9 +259,9 @@ h2.title em{font-style:normal;color:var(--lime)}
           <div class="notch"></div>
           <div class="app-top"><strong>🔥 FitStake</strong><span class="streak">🔥 6-day streak</span></div>
           <div class="pot-card"><div class="coin"></div><small>TOTAL POT • 7-DAY SPRINT</small><div class="amt">€<span id="potNum">90</span></div><div class="ends">3 friends • ends in 2d 14h • winner takes split</div></div>
-          <div class="lb-row"><div class="avatar" style="background:var(--lime)">R</div><div style="flex:1"><b>Rudra</b> <span style="color:var(--mint)">• 11,240 steps ✓</span><div class="bar"><i style="--w:96%"></i></div></div></div>
-          <div class="lb-row"><div class="avatar" style="background:#8b7cff">A</div><div style="flex:1"><b>Anna</b> <span style="color:var(--mint)">• 10,120 steps ✓</span><div class="bar"><i style="--w:82%"></i></div></div></div>
-          <div class="lb-row"><div class="avatar" style="background:#ff8a54">M</div><div style="flex:1"><b>Mark</b> <span style="color:#ff8a54">• 6,400 pending</span><div class="bar"><i style="--w:46%"></i></div></div></div>
+          <div class="lb-row"><div class="avatar" style="background:var(--lime)">RT</div><div style="flex:1"><b>Rudra</b> <span style="color:var(--mint)">• 11,240 steps ✓</span><div class="bar"><i style="--w:96%"></i></div></div></div>
+          <div class="lb-row"><div class="avatar" style="background:#8b7cff">AS</div><div style="flex:1"><b>Aum</b> <span style="color:var(--mint)">• 10,120 steps ✓</span><div class="bar"><i style="--w:82%"></i></div></div></div>
+          <div class="lb-row"><div class="avatar" style="background:#ff8a54">AP</div><div style="flex:1"><b>Aditya</b> <span style="color:#ff8a54">• 6,400 pending</span><div class="bar"><i style="--w:46%"></i></div></div></div>
           <div class="cta-row"><div class="btn solid">Sync steps</div><div class="btn ghost">Chat</div></div>
         </div></div>
       </div>
@@ -276,11 +276,13 @@ h2.title em{font-style:normal;color:var(--lime)}
       <h2 class="title rv d2">THE CREW BEHIND <em>THE STAKE</em></h2>
       <p class="sub rv d3">FitStake - a <b style="color:#fff">social fitness stake app</b> that fuses accountability with financial incentive. Friends lock money into a shared pot; finishers split it. Skip workouts, fund your friends.</p>
       <div class="team-grid">
-        <div class="member rv d3"><div class="m-ava" style="background:linear-gradient(135deg,var(--lime),var(--mint))">R1</div><h4>[ Your Name ]</h4><div class="uid">UID: [xxxxxx] • [Country]</div><span class="ctry">🌍 [Country]</span><p class="role"><b style="color:#fff">Lead / Full-stack</b> - Next.js app, Supabase schema, pitch & demo.</p></div>
-        <div class="member rv d4"><div class="m-ava" style="background:linear-gradient(135deg,#8b7cff,#5ee6ff)">R2</div><h4>[ Member Two ]</h4><div class="uid">UID: [xxxxxx] • [Country]</div><span class="ctry">🌍 [Country]</span><p class="role"><b style="color:#fff">Backend & Payments</b> - Stripe escrow, settlement engine, RLS policies.</p></div>
-        <div class="member rv d5"><div class="m-ava" style="background:linear-gradient(135deg,#ff6a2b,#ffc53f)">R3</div><h4>[ Member Three ]</h4><div class="uid">UID: [xxxxxx] • [Country]</div><span class="ctry">🌍 [Country]</span><p class="role"><b style="color:#fff">UI / Tracking</b> - Leaderboards, proof upload, Strava sync.</p></div>
+        <div class="member rv d3"><div class="m-ava" style="background:linear-gradient(135deg,var(--lime),var(--mint))">RT</div><h4>Rudra Tushir</h4><div class="uid">UID: 231ADB234</div><p class="role"><b style="color:#fff">Lead / Full-stack</b> - Next.js app, Supabase schema, pitch & demo.</p></div>
+        <div class="member rv d3"><div class="m-ava" style="background:linear-gradient(135deg,#8b7cff,#5ee6ff)">AS</div><h4>Aum Sohoni</h4><div class="uid">UID: 241ADB009</div><p class="role"><b style="color:#fff">Backend & Payments</b> - Stripe escrow, settlement engine, RLS policies.</p></div>
+        <div class="member rv d4"><div class="m-ava" style="background:linear-gradient(135deg,#ff6a2b,#ffc53f)">AP</div><h4>Aditya Panwar</h4><div class="uid">UID: 241ADB112</div><p class="role"><b style="color:#fff">Challenges & Leaderboard</b> - pools, invite codes, realtime board.</p></div>
+        <div class="member rv d4"><div class="m-ava" style="background:linear-gradient(135deg,#5ee6ff,#00e68c)">DT</div><h4>Dev Talati</h4><div class="uid">UID: 241ADB037</div><p class="role"><b style="color:#fff">Tracking & Verification</b> - proof upload, Strava / HealthKit sync.</p></div>
+        <div class="member rv d5"><div class="m-ava" style="background:linear-gradient(135deg,#ff5e8a,#ffc53f)">NS</div><h4>Nandana Subhash</h4><div class="uid">UID: 241ADB029</div><p class="role"><b style="color:#fff">UI / UX</b> - design system, mobile views, demo polish.</p></div>
+        <div class="member rv d5"><div class="m-ava" style="background:linear-gradient(135deg,#d6ff3f,#8b7cff)">NS</div><h4>Nithya Santhosh</h4><div class="uid">UID: TBD</div><p class="role"><b style="color:#fff">QA & Docs</b> - beta testing, settlement checks, final report.</p></div>
       </div>
-      <p class="edit-note rv d6">✎ REPLACE [ ] PLACEHOLDERS IN index.html (search "Member Two") - 30 seconds before presenting.</p>
     </div>
   </section>
 
@@ -365,7 +367,7 @@ h2.title em{font-style:normal;color:var(--lime)}
         <div class="phase p2 rv d4"><span class="wk">WEEKS 3–4 • MVP BUILD</span><h4>⚙ Core loop</h4><ul><li>Auth, profiles, dashboard</li><li>Challenge create + invite codes</li><li>Stripe stake lock-in</li><li>Proof upload + live leaderboard</li></ul></div>
         <div class="phase p3 rv d5"><span class="wk">WEEKS 5–6 • LAUNCH</span><h4>🚀 Settle & test</h4><ul><li>Cron settlement engine + payouts</li><li>Beta: 3–5 friend groups, €1–5 stakes</li><li>Bugfix, demo polish, final report</li><li><b style="color:#fff">Outcome: working paid-out challenge</b></li></ul></div>
       </div>
-      <div class="er-strip rv d6">ER &nbsp;<b>profiles</b> 1-∞ <b>challenge_participants</b> ∞-1 <b>challenges</b> 1-∞ <b>activity_logs</b> &nbsp;•&nbsp; <b>payouts</b> → Stripe &nbsp;•&nbsp; division: [you] full-stack • [M2] payments • [M3] tracking/UI</div>
+      <div class="er-strip rv d6">ER &nbsp;<b>profiles</b> 1-∞ <b>challenge_participants</b> ∞-1 <b>challenges</b> 1-∞ <b>activity_logs</b> &nbsp;•&nbsp; <b>payouts</b> → Stripe &nbsp;•&nbsp; division: Rudra full-stack • Aum payments • Aditya challenges • Dev tracking • Nandana UI • Nithya QA</div>
     </div>
   </section>
 
