@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FitStake - Project Idea Approval | Step 1 Presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060907;
+  --bg2:#0b100d;
+  --card:rgba(255,255,255,.055);
+  --stroke:rgba(255,255,255,.11);
+  --lime:#d6ff3f;
+  --mint:#00e68c;
+  --orange:#ff6a2b;
+  --violet:#8b7cff;
+  --text:#f2f5ef;
+  --muted:rgba(242,245,239,.62);
+  --faint:rgba(242,245,239,.38);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif}
+body{-webkit-font-smoothing:antialiased}
+::selection{background:var(--lime);color:#0a0f0a}
+
+/* ambient */
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(110px);opacity:.5;animation:drift 14s ease-in-out infinite alternate}
+.orb.a{width:56vw;height:56vw;left:-14vw;top:-18vw;background:radial-gradient(circle,#1d5c33 0%,transparent 65%)}
+.orb.b{width:44vw;height:44vw;right:-10vw;top:8vh;background:radial-gradient(circle,rgba(214,255,63,.28) 0%,transparent 62%);animation-delay:-4s}
+.orb.c{width:40vw;height:40vw;left:22vw;bottom:-18vw;background:radial-gradient(circle,rgba(0,230,140,.22) 0%,transparent 60%);animation-delay:-8s}
+@keyframes drift{to{transform:translate(4vw,3vh) scale(1.12)}}
+.grain{position:absolute;inset:0;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.gridlines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 90% 80% at 50% 40%,black 30%,transparent 75%)}
+
+/* chrome */
+.chrome{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 32px}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Unbounded';font-weight:800;font-size:15px;letter-spacing:.06em}
+.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--lime),var(--mint));display:grid;place-items:center;color:#08120a;font-weight:900;font-size:20px;box-shadow:0 8px 30px rgba(214,255,63,.35);transform:rotate(-6deg)}
+.brand small{display:block;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.22em;color:var(--muted);font-weight:400}
+.top-right{display:flex;align-items:center;gap:14px}
+.counter{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.14em;color:var(--muted);background:rgba(255,255,255,.06);border:1px solid var(--stroke);padding:9px 16px;border-radius:100px;backdrop-filter:blur(12px)}
+.counter b{color:var(--lime)}
+.pill{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.2em;color:#08120a;background:var(--lime);padding:10px 16px;border-radius:100px;font-weight:600}
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--lime),var(--mint));z-index:60;width:0%;transition:width .7s var(--ease);box-shadow:0 0 18px rgba(214,255,63,.7)}
+
+/* deck */
+.viewport{position:fixed;inset:0;z-index:1}
+.track{display:flex;height:100%;transition:transform .9s var(--ease);will-change:transform}
+.slide{min-width:100vw;width:100vw;height:100%;display:flex;align-items:center;justify-content:center;padding:104px 6vw 120px;position:relative;flex-shrink:0}
+.inner{width:min(1240px,100%);position:relative}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.28em;color:var(--lime);text-transform:uppercase;margin-bottom:22px}
+.kicker::before{content:'';width:34px;height:1px;background:var(--lime);display:inline-block}
+h1.display{font-family:'Unbounded';font-weight:900;line-height:.95;letter-spacing:-.02em;text-transform:uppercase}
+h1.display .stroke{-webkit-text-stroke:1.5px rgba(255,255,255,.75);color:transparent}
+h1.display .lime{color:var(--lime)}
+h2.title{font-family:'Unbounded';font-weight:800;font-size:clamp(30px,4.2vw,58px);line-height:1.02;letter-spacing:-.01em;text-transform:uppercase}
+h2.title em{font-style:normal;color:var(--lime)}
+.sub{color:var(--muted);font-size:clamp(15px,1.4vw,19px);line-height:1.6;max-width:56ch;margin-top:18px}
+.bignum{position:absolute;right:-10px;top:-70px;font-family:'Unbounded';font-weight:900;font-size:clamp(110px,16vw,230px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.13);pointer-events:none;user-select:none}
+
+/* reveal anim */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.slide.active .rv{opacity:1;transform:none}
+.slide.active .rv.d1{transition-delay:.08s}.slide.active .rv.d2{transition-delay:.18s}.slide.active .rv.d3{transition-delay:.28s}.slide.active .rv.d4{transition-delay:.38s}.slide.active .rv.d5{transition-delay:.48s}.slide.active .rv.d6{transition-delay:.58s}
+
+/* cover */
+.cover-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(214,255,63,.35);background:rgba(214,255,63,.08);color:var(--lime);font-family:'JetBrains Mono';font-size:11px;letter-spacing:.22em;padding:10px 18px;border-radius:100px;margin-bottom:26px}
+.dot-live{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(214,255,63,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(214,255,63,0)}100%{box-shadow:0 0 0 0 rgba(214,255,63,0)}}
+.cover-grid h1{font-size:clamp(52px,7.6vw,116px)}
+.tagline{margin-top:22px;font-size:clamp(16px,1.6vw,21px);color:var(--text);font-weight:500;max-width:34ch;line-height:1.45}
+.tagline span{color:var(--lime)}
+.meta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.meta-chip{border:1px solid var(--stroke);background:var(--card);backdrop-filter:blur(14px);border-radius:14px;padding:12px 18px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.12em;color:var(--muted)}
+.meta-chip b{color:var(--text);display:block;font-size:13px;letter-spacing:0;margin-top:2px}
+
+/* phone */
+.phone-wrap{display:flex;justify-content:center;perspective:1200px}
+.phone{width:min(320px,72vw);border-radius:44px;background:linear-gradient(180deg,#131a15,#0a0e0b);border:1px solid rgba(255,255,255,.16);padding:14px;box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 8px rgba(255,255,255,.03),0 0 80px rgba(214,255,63,.12);transform:rotateY(-12deg) rotateX(4deg);transition:transform .8s var(--ease)}
+.slide.active .phone{transform:rotateY(-6deg) rotateX(2deg)}
+.screen{border-radius:32px;background:radial-gradient(120% 90% at 50% 0%,#18241c 0%,#0a0e0b 60%);overflow:hidden;padding:20px 18px 18px;min-height:560px;display:flex;flex-direction:column}
+.notch{width:110px;height:24px;background:#000;border-radius:100px;margin:0 auto 14px}
+.app-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.app-top strong{font-family:'Unbounded';font-size:13px}
+.streak{font-size:11px;background:rgba(255,106,43,.16);color:#ff9a6b;border:1px solid rgba(255,106,43,.4);padding:5px 10px;border-radius:100px}
+.pot-card{background:linear-gradient(135deg,#d6ff3f,#00e68c);border-radius:20px;padding:18px;color:#08120a;position:relative;overflow:hidden}
+.pot-card small{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.2em;opacity:.7}
+.pot-card .amt{font-family:'Unbounded';font-weight:800;font-size:38px;margin:4px 0}
+.pot-card .ends{font-size:12px;opacity:.75}
+.coin{position:absolute;right:-18px;top:-18px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff8,transparent 40%),linear-gradient(135deg,#fff,#c8ff5e);opacity:.5}
+.lb-row{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:10px 12px;margin-top:10px;font-size:13px}
+.avatar{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;color:#08120a;flex-shrink:0}
+.bar{height:6px;border-radius:100px;background:rgba(255,255,255,.12);margin-top:7px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:100px;background:linear-gradient(90deg,var(--lime),var(--mint));width:0;transition:width 1.4s var(--ease)}
+.slide.active .bar i{width:var(--w)}
+.cta-row{display:flex;gap:10px;margin-top:auto;padding-top:16px}
+.btn{flex:1;text-align:center;font-weight:700;font-size:13px;padding:13px;border-radius:14px}
+.btn.solid{background:var(--lime);color:#08120a}
+.btn.ghost{border:1px solid rgba(255,255,255,.2);color:#fff}
+
+/* generic cards */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.card{background:var(--card);border:1px solid var(--stroke);border-radius:22px;padding:26px;backdrop-filter:blur(16px);position:relative;overflow:hidden;transition:transform .4s var(--ease),border-color .4s}
+.card:hover{transform:translateY(-5px);border-color:rgba(214,255,63,.4)}
+.card .icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:22px;margin-bottom:16px}
+.card h3{font-size:18px;margin-bottom:8px;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:14.5px;line-height:1.6}
+.card .stat{font-family:'Unbounded';font-weight:800;font-size:34px;color:var(--lime);margin-bottom:4px}
+.stat-cap{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
+
+/* team */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.member{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid var(--stroke);border-radius:22px;padding:26px 24px;position:relative;overflow:hidden}
+.member::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--lime),var(--mint));opacity:0;transition:opacity .3s}
+.member:hover::after{opacity:1}
+.m-ava{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-family:'Unbounded';font-weight:800;font-size:20px;color:#08120a;margin-bottom:16px}
+.member h4{font-size:17px}
+.member .uid{font-family:'JetBrains Mono';font-size:11px;color:var(--lime);letter-spacing:.08em;margin:6px 0}
+.member .ctry{display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--stroke);padding:5px 12px;border-radius:100px}
+.member .role{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.5}
+.edit-note{margin-top:16px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.06em;color:var(--faint)}
+
+/* problem bars */
+.prob-layout{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;margin-top:8px}
+.big-stat-row{display:flex;gap:16px;margin-top:28px}
+.big-stat{flex:1;background:linear-gradient(180deg,rgba(255,106,43,.14),rgba(255,106,43,.04));border:1px solid rgba(255,106,43,.3);border-radius:20px;padding:22px;text-align:center}
+.big-stat.dark{background:var(--card);border-color:var(--stroke)}
+.big-stat .n{font-family:'Unbounded';font-weight:800;font-size:clamp(30px,3.4vw,46px)}
+.big-stat .n.lime{color:var(--lime)}.big-stat .n.orange{color:#ff8a54}
+.big-stat small{color:var(--muted);font-size:13px;line-height:1.5;display:block;margin-top:8px}
+.quote{border-left:3px solid var(--orange);padding:6px 0 6px 20px;margin-top:24px;color:var(--text);font-size:17px;line-height:1.6;font-style:italic}
+.quote cite{display:block;font-style:normal;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;color:var(--faint);margin-top:10px}
+
+/* flow */
+.flow{display:flex;align-items:stretch;gap:0;margin-top:32px}
+.step{flex:1;background:var(--card);border:1px solid var(--stroke);padding:24px 20px;position:relative;text-align:center}
+.step:first-child{border-radius:20px 0 0 20px}.step:last-child{border-radius:0 20px 20px 0;background:linear-gradient(180deg,rgba(214,255,63,.14),rgba(214,255,63,.03));border-color:rgba(214,255,63,.4)}
+.step .snum{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.24em;color:var(--lime)}
+.step .emoji{font-size:30px;margin:12px 0 8px}
+.step h4{font-size:15px;margin-bottom:6px}
+.step p{font-size:13px;color:var(--muted);line-height:1.55}
+.step + .step{border-left:none}
+.arrow-mid{align-self:center;padding:0 6px;color:var(--lime);font-size:20px;z-index:2;display:none}
+.split-demo{display:flex;gap:18px;margin-top:20px;align-items:stretch}
+.calc{flex:1;background:#0d130f;border:1px solid rgba(214,255,63,.25);border-radius:20px;padding:24px}
+.calc label{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.2em;color:var(--muted)}
+.calc input[type=range]{width:100%;accent-color:var(--lime);margin:12px 0}
+.calc-out{display:flex;gap:12px;margin-top:6px}
+.calc-out div{flex:1;background:rgba(214,255,63,.08);border:1px solid rgba(214,255,63,.25);border-radius:14px;padding:14px;text-align:center}
+.calc-out b{font-family:'Unbounded';font-size:22px;color:var(--lime)}
+.calc-out small{display:block;font-size:11px;color:var(--muted);margin-top:4px}
+
+/* tech */
+.arch{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;margin-top:30px}
+.layer{background:var(--card);border:1px solid var(--stroke);border-radius:20px;padding:22px;text-align:center}
+.layer.front{border-color:rgba(139,124,255,.45)}
+.layer.back{border-color:rgba(255,106,43,.45)}
+.layer.data{border-color:rgba(214,255,63,.45)}
+.layer h4{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.22em;margin-bottom:14px}
+.layer.front h4{color:var(--violet)}.layer.back h4{color:#ff8a54}.layer.data h4{color:var(--lime)}
+.tchip{display:block;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px;margin-top:8px;font-size:13px;font-weight:600}
+.tchip small{display:block;font-weight:400;color:var(--muted);font-size:11px;margin-top:2px}
+.connector{align-self:center;color:var(--faint);font-size:22px}
+.stack-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.stack-row span{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.1em;border:1px solid var(--stroke);background:rgba(255,255,255,.04);padding:9px 16px;border-radius:100px;color:var(--muted)}
+.stack-row span b{color:var(--lime)}
+
+/* plan */
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.phase{border-radius:22px;padding:26px;border:1px solid var(--stroke);background:var(--card);position:relative;overflow:hidden}
+.phase .wk{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.22em;padding:7px 14px;border-radius:100px;display:inline-block;margin-bottom:16px}
+.phase.p1 .wk{background:rgba(139,124,255,.18);color:#b7adff;border:1px solid rgba(139,124,255,.4)}
+.phase.p2 .wk{background:rgba(214,255,63,.14);color:var(--lime);border:1px solid rgba(214,255,63,.4)}
+.phase.p3 .wk{background:rgba(255,106,43,.14);color:#ff9a6b;border:1px solid rgba(255,106,43,.4)}
+.phase h4{font-size:17px;margin-bottom:10px}
+.phase ul{list-style:none;margin-top:6px}
+.phase li{font-size:13.5px;color:var(--muted);padding:7px 0 7px 22px;position:relative;line-height:1.5}
+.phase li::before{content:'▸';position:absolute;left:0;color:var(--lime)}
+.er-strip{margin-top:18px;display:flex;gap:10px;align-items:center;background:#0c110d;border:1px dashed rgba(214,255,63,.35);border-radius:16px;padding:16px 20px;font-family:'JetBrains Mono';font-size:12px;color:var(--muted);overflow-x:auto;white-space:nowrap}
+.er-strip b{color:var(--lime)}
+
+/* closing */
+.close-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.money{font-family:'Unbounded';font-weight:900;font-size:clamp(60px,8vw,130px);line-height:1;background:linear-gradient(180deg,#fff,var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
+.btnrow{display:flex;gap:14px;margin-top:30px}
+.btn-big{padding:18px 34px;border-radius:100px;font-weight:700;font-size:15px;cursor:pointer;border:none;font-family:'Space Grotesk'}
+.btn-big.lime{background:var(--lime);color:#08120a;box-shadow:0 12px 40px rgba(214,255,63,.3)}
+.btn-big.line{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
+
+/* nav */
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:22px 32px}
+.hint{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.16em;color:var(--faint);display:flex;align-items:center;gap:12px}
+.key{border:1px solid var(--stroke);background:rgba(255,255,255,.06);border-radius:8px;padding:5px 11px;font-size:12px;color:var(--text)}
+.dots{display:flex;gap:10px}
+.dot{width:34px;height:5px;border-radius:100px;background:rgba(255,255,255,.15);cursor:pointer;transition:all .4s var(--ease);border:none;padding:0}
+.dot.on{background:var(--lime);width:56px;box-shadow:0 0 14px rgba(214,255,63,.6)}
+.arrows{display:flex;gap:10px}
+.abtn{width:52px;height:52px;border-radius:50%;border:1px solid var(--stroke);background:rgba(255,255,255,.06);color:#fff;font-size:20px;cursor:pointer;backdrop-filter:blur(12px);transition:all .3s;display:grid;place-items:center}
+.abtn:hover{background:var(--lime);color:#08120a;border-color:var(--lime);transform:scale(1.06)}
+.abtn:disabled{opacity:.25;pointer-events:none}
+.clickzone{position:fixed;top:0;bottom:0;width:8vw;z-index:40;cursor:pointer}
+.clickzone.left{left:0}.clickzone.right{right:0}
+
+@media (max-width:980px){
+  .cover-grid,.prob-layout,.close-grid{grid-template-columns:1fr}
+  .phone-wrap{display:none}
+  .grid3,.team-grid,.timeline{grid-template-columns:1fr}
+  .grid2{grid-template-columns:1fr}
+  .arch{grid-template-columns:1fr}.connector{transform:rotate(90deg);justify-self:center}
+  .flow{flex-direction:column}.step:first-child{border-radius:20px 20px 0 0}.step:last-child{border-radius:0 0 20px 20px}.step+.step{border-left:1px solid var(--stroke);border-top:none}
+  .slide{padding:96px 6vw 130px;align-items:flex-start;overflow-y:auto}
+  .bignum{display:none}
+  .pill{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div><div class="gridlines"></div><div class="grain"></div></div>
+<div class="progress" id="progress"></div>
+
+<header class="chrome">
+  <div class="brand"><div class="mark">F</div><div>FITSTAKE<small>SWEAT • STAKE • WIN</small></div></div>
+  <div class="top-right">
+    <div class="pill">STEP 1 &nbsp;•&nbsp; IDEA APPROVAL &nbsp;•&nbsp; 10 MIN</div>
+    <div class="counter"><b id="cur">01</b> / <span id="tot">07</span></div>
+  </div>
+</header>
+
+<div class="clickzone left" id="zL"></div>
+<div class="clickzone right" id="zR"></div>
+
+<main class="viewport">
+<div class="track" id="track">
+
+  <!-- COVER -->
+  <section class="slide" data-name="Cover">
+    <div class="inner cover-grid">
+      <div>
+        <div class="rv d1 hero-badge"><span class="dot-live"></span> RTU &nbsp;•&nbsp; PROJECT IDEA APPROVAL &nbsp;•&nbsp; SEPT / OCT</div>
+        <h1 class="display rv d2">SWEAT.<br><span class="stroke">STAKE.</span><br><span class="lime">WIN.</span></h1>
+        <p class="tagline rv d3">Meet <span>FitStake</span> - the social fitness app where friends bet on themselves and only the consistent take the pot.</p>
+        <div class="meta-row rv d4">
+          <div class="meta-chip">DURATION<b>⏱ 10 minutes</b></div>
+          <div class="meta-chip">FORMAT<b>5 slides + demo</b></div>
+          <div class="meta-chip">TIMELINE<b>4–6 weeks build</b></div>
+        </div>
+        <p class="rv d5" style="margin-top:22px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.18em;color:var(--faint)">PRESS → TO BEGIN &nbsp;&nbsp; ← → NAVIGATE &nbsp;&nbsp; CLICK SIDES TO MOVE</p>
+      </div>
+      <div class="phone-wrap rv d3">
+        <div class="phone"><div class="screen">
+          <div class="notch"></div>
+          <div class="app-top"><strong>🔥 FitStake</strong><span class="streak">🔥 6-day streak</span></div>
+          <div class="pot-card"><div class="coin"></div><small>TOTAL POT • 7-DAY SPRINT</small><div class="amt">€<span id="potNum">90</span></div><div class="ends">3 friends • ends in 2d 14h • winner takes split</div></div>
+          <div class="lb-row"><div class="avatar" style="background:var(--lime)">R</div><div style="flex:1"><b>Rudra</b> <span style="color:var(--mint)">• 11,240 steps ✓</span><div class="bar"><i style="--w:96%"></i></div></div></div>
+          <div class="lb-row"><div class="avatar" style="background:#8b7cff">A</div><div style="flex:1"><b>Anna</b> <span style="color:var(--mint)">• 10,120 steps ✓</span><div class="bar"><i style="--w:82%"></i></div></div></div>
+          <div class="lb-row"><div class="avatar" style="background:#ff8a54">M</div><div style="flex:1"><b>Mark</b> <span style="color:#ff8a54">• 6,400 pending</span><div class="bar"><i style="--w:46%"></i></div></div></div>
+          <div class="cta-row"><div class="btn solid">Sync steps</div><div class="btn ghost">Chat</div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 1 TEAM -->
+  <section class="slide" data-name="Team">
+    <div class="inner">
+      <div class="bignum">01</div>
+      <div class="kicker rv d1">Slide 1 / 5 - Team Information</div>
+      <h2 class="title rv d2">THE CREW BEHIND <em>THE STAKE</em></h2>
+      <p class="sub rv d3">FitStake - a <b style="color:#fff">social fitness stake app</b> that fuses accountability with financial incentive. Friends lock money into a shared pot; finishers split it. Skip workouts, fund your friends.</p>
+      <div class="team-grid">
+        <div class="member rv d3"><div class="m-ava" style="background:linear-gradient(135deg,var(--lime),var(--mint))">R1</div><h4>[ Your Name ]</h4><div class="uid">UID: [xxxxxx] • [Country]</div><span class="ctry">🌍 [Country]</span><p class="role"><b style="color:#fff">Lead / Full-stack</b> - Next.js app, Supabase schema, pitch & demo.</p></div>
+        <div class="member rv d4"><div class="m-ava" style="background:linear-gradient(135deg,#8b7cff,#5ee6ff)">R2</div><h4>[ Member Two ]</h4><div class="uid">UID: [xxxxxx] • [Country]</div><span class="ctry">🌍 [Country]</span><p class="role"><b style="color:#fff">Backend & Payments</b> - Stripe escrow, settlement engine, RLS policies.</p></div>
+        <div class="member rv d5"><div class="m-ava" style="background:linear-gradient(135deg,#ff6a2b,#ffc53f)">R3</div><h4>[ Member Three ]</h4><div class="uid">UID: [xxxxxx] • [Country]</div><span class="ctry">🌍 [Country]</span><p class="role"><b style="color:#fff">UI / Tracking</b> - Leaderboards, proof upload, Strava sync.</p></div>
+      </div>
+      <p class="edit-note rv d6">✎ REPLACE [ ] PLACEHOLDERS IN index.html (search "Member Two") - 30 seconds before presenting.</p>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 PROBLEM -->
+  <section class="slide" data-name="Problem">
+    <div class="inner">
+      <div class="bignum">02</div>
+      <div class="kicker rv d1">Slide 2 / 5 - Problem</div>
+      <h2 class="title rv d2">MOTIVATION DIES <em>BY FEBRUARY</em></h2>
+      <div class="prob-layout">
+        <div>
+          <p class="sub rv d3" style="margin-top:0">Fitness apps track. They don't <b style="color:#fff">compel</b>. Willpower alone fails 18–35 year-olds training with friends - no cost to skipping, no reward for showing up, no one watching.</p>
+          <div class="big-stat-row rv d4">
+            <div class="big-stat"><div class="n orange">80%</div><small>quit New-Year fitness goals within 2 months</small></div>
+            <div class="big-stat dark"><div class="n lime">€0</div><small>lost when you skip a workout today - zero stakes</small></div>
+            <div class="big-stat dark"><div class="n">1 in 3</div><small>say they'd train more with friends + rewards</small></div>
+          </div>
+          <div class="quote rv d5">“I don't need another step counter. I need a reason not to skip leg day.”<cite>- EVERY CASUAL GYM-GOER, 18–35</cite></div>
+        </div>
+        <div class="rv d4" style="display:flex;flex-direction:column;gap:14px">
+          <div class="card" style="border-color:rgba(255,106,43,.35)"><div class="icon" style="background:rgba(255,106,43,.15)">😮‍💨</div><h3>Who feels it?</h3><p>Friend groups 18–35, casual gym-goers, runners & students. Secondary: gamified goal-chasers who love competition.</p></div>
+          <div class="card"><div class="icon" style="background:rgba(214,255,63,.14)">🎯</div><h3>Why it matters</h3><p>Inconsistency kills health outcomes. Loss aversion is proven - people fight harder to <b style="color:#fff">avoid losing €10</b> than to gain €10.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3 SOLUTION -->
+  <section class="slide" data-name="Solution">
+    <div class="inner">
+      <div class="bignum">03</div>
+      <div class="kicker rv d1">Slide 3 / 5 - Proposed Solution</div>
+      <h2 class="title rv d2">BET ON <em>YOURSELF</em></h2>
+      <p class="sub rv d3">Users: friend groups & fitness enthusiasts. The app: <b style="color:#fff">create a challenge → stake money → verify workouts → winners split the pot.</b> Try the math live:</p>
+      <div class="flow rv d4">
+        <div class="step"><div class="snum">STEP 01</div><div class="emoji">🏁</div><h4>Create pool</h4><p>Private group, invite code, €5–20 stake, 3–30 days</p></div>
+        <div class="step"><div class="snum">STEP 02</div><div class="emoji">💳</div><h4>Lock stake</h4><p>Stripe holds funds - skin in the game</p></div>
+        <div class="step"><div class="snum">STEP 03</div><div class="emoji">⌚</div><h4>Prove it</h4><p>Screenshot peer-review → Strava / HealthKit auto-sync</p></div>
+        <div class="step"><div class="snum">STEP 04</div><div class="emoji">💸</div><h4>Get paid</h4><p>Auto-settlement: split, winner-takes-all, or refund</p></div>
+      </div>
+      <div class="split-demo rv d5">
+        <div class="calc">
+          <label>STAKE PER PERSON - €<span id="stakeVal">10</span> &nbsp;&nbsp;•&nbsp;&nbsp; PLAYERS - <span id="playVal">6</span> &nbsp;&nbsp;•&nbsp;&nbsp; WINNERS - <span id="winVal">4</span></label>
+          <input type="range" id="rStake" min="1" max="50" value="10">
+          <input type="range" id="rPlay" min="2" max="20" value="6">
+          <input type="range" id="rWin" min="1" max="6" value="4">
+          <div class="calc-out"><div><b id="oPot">€60</b><small>total pot</small></div><div><b id="oEach">€15</b><small>each winner gets</small></div><div><b id="oFee">€4.20</b><small>FitStake 7% fee</small></div></div>
+        </div>
+        <div style="flex:.9;display:flex;flex-direction:column;gap:12px">
+          <div class="card" style="flex:1"><div class="stat">5 ★</div><div class="stat-cap">Core features</div><p style="margin-top:10px">Auth & profiles • Challenge pools • Proof + auto tracking • Live leaderboard & chat • Auto payouts</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4 TECH -->
+  <section class="slide" data-name="Tech">
+    <div class="inner">
+      <div class="bignum">04</div>
+      <div class="kicker rv d1">Slide 4 / 5 - Technologies & Architecture</div>
+      <h2 class="title rv d2">BUILT TO SHIP <em>FAST</em>, SCALE LATER</h2>
+      <p class="sub rv d3">Supabase over Firebase - relational Postgres, RLS security & native transactions for real money. Next.js BFF + Stripe escrow + Vercel deploy.</p>
+      <div class="arch rv d4">
+        <div class="layer front"><h4>◧ FRONTEND</h4><span class="tchip">Next.js 14 + React<small>App Router</small></span><span class="tchip">Tailwind CSS<small>Design system</small></span><span class="tchip">Supabase Realtime<small>Leaderboard</small></span></div>
+        <div class="connector">⟶</div>
+        <div class="layer back"><h4>◧ BACKEND / APIs</h4><span class="tchip">API Routes (BFF)<small>Validation</small></span><span class="tchip">Stripe Connect<small>Escrow + payouts</small></span><span class="tchip">Strava • HealthKit • Fit<small>Verification</small></span></div>
+        <div class="connector">⟶</div>
+        <div class="layer data"><h4>◧ DATA + CLOUD</h4><span class="tchip">Supabase Postgres + RLS<small>profiles • challenges</small></span><span class="tchip">Edge Functions + Cron<small>Auto-settlement</small></span><span class="tchip">Vercel + Storage<small>Avatars • proofs</small></span></div>
+      </div>
+      <div class="stack-row rv d5"><span><b>DB</b> &nbsp;PostgreSQL (Supabase)</span><span><b>PAY</b> &nbsp;Stripe</span><span><b>AUTH</b> &nbsp;Email • Google • Apple</span><span><b>HOST</b> &nbsp;Vercel</span><span><b>APP</b> &nbsp;HTML5 • JS/TS • CSS</span></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5 PLAN -->
+  <section class="slide" data-name="Plan">
+    <div class="inner">
+      <div class="bignum">05</div>
+      <div class="kicker rv d1">Slide 5 / 5 - Project Plan</div>
+      <h2 class="title rv d2">FROM IDEA TO <em>PAYOUT IN 6 WEEKS</em></h2>
+      <div class="timeline">
+        <div class="phase p1 rv d3"><span class="wk">WEEKS 1–2 • SETUP</span><h4>🗂 Foundation</h4><ul><li>Next.js + Tailwind repo, Vercel deploy</li><li>Supabase: schema, auth, storage, RLS</li><li>Stripe dev account + test escrow</li><li>ER / UML diagrams sign-off</li></ul></div>
+        <div class="phase p2 rv d4"><span class="wk">WEEKS 3–4 • MVP BUILD</span><h4>⚙ Core loop</h4><ul><li>Auth, profiles, dashboard</li><li>Challenge create + invite codes</li><li>Stripe stake lock-in</li><li>Proof upload + live leaderboard</li></ul></div>
+        <div class="phase p3 rv d5"><span class="wk">WEEKS 5–6 • LAUNCH</span><h4>🚀 Settle & test</h4><ul><li>Cron settlement engine + payouts</li><li>Beta: 3–5 friend groups, €1–5 stakes</li><li>Bugfix, demo polish, final report</li><li><b style="color:#fff">Outcome: working paid-out challenge</b></li></ul></div>
+      </div>
+      <div class="er-strip rv d6">ER &nbsp;<b>profiles</b> 1-∞ <b>challenge_participants</b> ∞-1 <b>challenges</b> 1-∞ <b>activity_logs</b> &nbsp;•&nbsp; <b>payouts</b> → Stripe &nbsp;•&nbsp; division: [you] full-stack • [M2] payments • [M3] tracking/UI</div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="slide" data-name="Ask">
+    <div class="inner close-grid">
+      <div>
+        <div class="kicker rv d1">The ask - approve & let's build</div>
+        <div class="money rv d2">€90</div>
+        <h2 class="title rv d3">SKIPPERS FUND <em>WINNERS.</em></h2>
+        <p class="sub rv d4">Roadmap: private pools → public sponsored pots (€1,000 pools, 5–8% fee) → corporate wellness & brand sponsors → native wearables + anti-cheat AI.</p>
+        <div class="btnrow rv d5"><button class="btn-big lime" onclick="go(0)">↺ Replay deck</button><button class="btn-big line" onclick="toggleFull()">⛶ Fullscreen</button></div>
+        <p class="rv d6" style="margin-top:20px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.2em;color:var(--faint)">THANK YOU - QUESTIONS? &nbsp;•&nbsp; FITSTAKE • RTU 2026</p>
+      </div>
+      <div class="rv d4">
+        <div class="card" style="background:linear-gradient(135deg,rgba(214,255,63,.12),rgba(0,230,140,.06));border-color:rgba(214,255,63,.4)">
+          <div class="stat-cap">Expected outcome</div>
+          <div class="stat" style="font-size:26px;margin-top:8px">Live MVP + real payout</div>
+          <p style="margin-top:10px">Friends create a 7-day 10k-step challenge, stake real euros, verify daily, and the engine auto-pays winners. Demo-ready for final review.</p>
+          <div class="bar" style="margin-top:16px"><i style="--w:100%"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="nav">
+  <div class="hint"><span class="key">←</span><span class="key">→</span> ARROWS / CLICK SIDES / SWIPE</div>
+  <div class="dots" id="dots"></div>
+  <div class="arrows">
+    <button class="abtn" id="prev" aria-label="Previous">←</button>
+    <button class="abtn" id="next" aria-label="Next">→</button>
+  </div>
+</footer>
+
+<script>
+const track=document.getElementById('track');
+const slides=[...document.querySelectorAll('.slide')];
+const dots=document.getElementById('dots');
+const cur=document.getElementById('cur');
+const prog=document.getElementById('progress');
+const prevB=document.getElementById('prev'), nextB=document.getElementById('next');
+let i=0, potT=null;
+document.getElementById('tot').textContent=String(slides.length).padStart(2,'0');
+slides.forEach((_,k)=>{const d=document.createElement('button');d.className='dot'+(k===0?' on':'');d.setAttribute('aria-label','Go to slide '+(k+1));d.onclick=e=>{e.stopPropagation();go(k)};dots.appendChild(d)});
+function go(n){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  track.style.transform=`translateX(-${i*100}vw)`;
+  slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
+  cur.textContent=String(i+1).padStart(2,'0');
+  prog.style.width=((i+1)/slides.length*100)+'%';
+  prevB.disabled=i===0; nextB.disabled=i===slides.length-1;
+  if(i===0) animatePot();
+}
+function animatePot(){
+  const el=document.getElementById('potNum'); if(!el) return;
+  clearInterval(potT); let v=0; const target=90;
+  potT=setInterval(()=>{v+=3; if(v>=target){v=target;clearInterval(potT)} el.textContent=v},40);
+}
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(i+1)}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(i-1)}
+  else if(e.key==='Home'){go(0)} else if(e.key==='End'){go(slides.length-1)}
+  else if(e.key==='f'||e.key==='F'){toggleFull()}
+});
+prevB.onclick=()=>go(i-1); nextB.onclick=()=>go(i+1);
+document.getElementById('zL').onclick=()=>go(i-1);
+document.getElementById('zR').onclick=()=>go(i+1);
+let tx=null;
+document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+document.addEventListener('touchend',e=>{
+  if(tx===null)return; const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>60) go(i+(dx<0?1:-1)); tx=null;
+},{passive:true});
+document.addEventListener('wheel',e=>{
+  if(Math.abs(e.deltaY)<40||Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
+  clearTimeout(window._wt); window._wt=setTimeout(()=>go(i+(e.deltaY>0?1:-1)),120);
+},{passive:true});
+function toggleFull(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{})}
+// pot calculator
+const rS=document.getElementById('rStake'),rP=document.getElementById('rPlay'),rW=document.getElementById('rWin');
+function calc(){
+  const s=+rS.value,p=+rP.value; let w=Math.min(+rW.value,p); rW.max=p;
+  document.getElementById('stakeVal').textContent=s;
+  document.getElementById('playVal').textContent=p;
+  document.getElementById('winVal').textContent=w;
+  const pot=s*p, fee=(pot*.07);
+  document.getElementById('oPot').textContent='€'+pot;
+  document.getElementById('oEach').textContent='€'+((pot-fee)/w).toFixed(2).replace(/\.00$/,'');
+  document.getElementById('oFee').textContent='€'+fee.toFixed(2);
+}
+[rS,rP,rW].forEach(r=>r.addEventListener('input',calc)); calc();
+go(0);
+</script>
+</body>
+</html>
