@@ -40,7 +40,8 @@ body{-webkit-font-smoothing:antialiased}
 /* chrome */
 .chrome{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 32px}
 .brand{display:flex;align-items:center;gap:12px;font-family:'Unbounded';font-weight:800;font-size:15px;letter-spacing:.06em}
-.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--lime),var(--mint));display:grid;place-items:center;color:#08120a;font-weight:900;font-size:20px;box-shadow:0 8px 30px rgba(214,255,63,.35);transform:rotate(-6deg)}
+.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--lime),var(--mint));display:grid;place-items:center;color:#08120a;font-weight:900;font-size:20px;box-shadow:0 8px 30px rgba(214,255,63,.35);transform:rotate(-6deg);overflow:hidden}
+.mark img{width:100%;height:100%;object-fit:cover;display:block}
 .brand small{display:block;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.22em;color:var(--muted);font-weight:400}
 .top-right{display:flex;align-items:center;gap:14px}
 .counter{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.14em;color:var(--muted);background:rgba(255,255,255,.06);border:1px solid var(--stroke);padding:9px 16px;border-radius:100px;backdrop-filter:blur(12px)}
@@ -208,6 +209,15 @@ h2.title em{font-style:normal;color:var(--lime)}
 .clickzone{position:fixed;top:0;bottom:0;width:8vw;z-index:40;cursor:pointer}
 .clickzone.left{left:0}.clickzone.right{right:0}
 
+.phone-wrap{position:relative}
+.meme-sticker{position:absolute;left:-14px;bottom:10px;width:152px;background:#0d130f;border:1px solid var(--stroke);border-radius:18px;padding:8px 8px 10px;transform:rotate(-8deg);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 40px rgba(214,255,63,.1);z-index:3;margin:0}
+.meme-sticker img{width:100%;height:112px;object-fit:cover;object-position:top;border-radius:12px;display:block;background:#fff}
+.meme-sticker figcaption{font-family:'JetBrains Mono';font-size:9px;letter-spacing:.18em;color:var(--lime);text-align:center;margin-top:8px}
+@keyframes floaty{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(-5deg) translateY(-10px)}}
+.slide.active .meme-sticker{animation:floaty 5s ease-in-out infinite}
+.close-bg{position:relative;width:min(100%,360px);aspect-ratio:461/433;object-fit:contain;opacity:1;filter:drop-shadow(0 24px 50px rgba(0,0,0,.55)) drop-shadow(0 0 45px rgba(214,255,63,.16))}
+@media (max-height:800px){.close-bg{width:min(100%,280px)}}
+.slide[data-name="Ask"] .inner{position:relative;z-index:1}
 @media (max-width:980px){
   .cover-grid,.prob-layout,.close-grid{grid-template-columns:1fr}
   .phone-wrap{display:none}
@@ -217,6 +227,7 @@ h2.title em{font-style:normal;color:var(--lime)}
   .flow{flex-direction:column}.step:first-child{border-radius:20px 20px 0 0}.step:last-child{border-radius:0 0 20px 20px}.step+.step{border-left:1px solid var(--stroke);border-top:none}
   .slide{padding:96px 6vw 130px;align-items:flex-start;overflow-y:auto}
   .bignum{display:none}
+  .close-bg{width:min(100%,400px);opacity:1}
   .pill{display:none}
 }
 </style>
@@ -227,7 +238,7 @@ h2.title em{font-style:normal;color:var(--lime)}
 <div class="progress" id="progress"></div>
 
 <header class="chrome">
-  <div class="brand"><div class="mark">L</div><div>LOCKEDIN<small>COMMIT • PROVE • WIN</small></div></div>
+  <div class="brand"><div class="mark"><img src="assets/logo.png" alt="LockedIn"></div><div>LOCKEDIN<small>COMMIT • PROVE • WIN</small></div></div>
   <div class="top-right">
     <div class="pill">STEP 1 &nbsp;•&nbsp; IDEA APPROVAL &nbsp;•&nbsp; 10 MIN</div>
     <div class="counter"><b id="cur">01</b> / <span id="tot">07</span></div>
@@ -264,6 +275,7 @@ h2.title em{font-style:normal;color:var(--lime)}
           <div class="lb-row"><div class="avatar" style="background:#ff8a54">AP</div><div style="flex:1"><b>Aditya</b> <span style="color:#ff8a54">• 2/5 tasks pending</span><div class="bar"><i style="--w:46%"></i></div></div></div>
           <div class="cta-row"><div class="btn solid">Log proof</div><div class="btn ghost">Chat</div></div>
         </div></div>
+        <figure class="meme-sticker rv d5"><img src="assets/logo.png" alt="Locked in"><figcaption>LOCKED IN, LITERALLY</figcaption></figure>
       </div>
     </div>
   </section>
@@ -382,8 +394,9 @@ h2.title em{font-style:normal;color:var(--lime)}
         <div class="btnrow rv d5"><button class="btn-big lime" onclick="go(0)">↺ Replay deck</button><button class="btn-big line" onclick="toggleFull()">⛶ Fullscreen</button></div>
         <p class="rv d6" style="margin-top:20px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.2em;color:var(--faint)">THANK YOU - QUESTIONS? &nbsp;•&nbsp; LOCKEDIN • RTU 2026</p>
       </div>
-      <div class="rv d4">
-        <div class="card" style="background:linear-gradient(135deg,rgba(214,255,63,.12),rgba(0,230,140,.06));border-color:rgba(214,255,63,.4)">
+      <div class="rv d4" style="display:flex;flex-direction:column;gap:18px;align-items:center;justify-content:center">
+        <img class="close-bg" src="assets/ape-cutout.png" alt="Time to lock in">
+        <div class="card" style="background:linear-gradient(135deg,rgba(214,255,63,.12),rgba(0,230,140,.06));border-color:rgba(214,255,63,.4);width:100%">
           <div class="stat-cap">Expected outcome</div>
           <div class="stat" style="font-size:26px;margin-top:8px">Live MVP + real payout</div>
           <p style="margin-top:10px">Friends create a 7-day challenge - steps, coding hours, study goals - stake real euros, verify daily, and the engine auto-pays winners. Demo-ready for final review.</p>
